@@ -30,3 +30,5 @@ console.log(`Meu ID e: ${simbolo.description}`);
 //Tipo BigInt
 let numeroGrande = BigInt(9000000000000000000000000000000000000000000000000000000000000000000000000000000000000);
 console.log(`Numero grande: ${numeroGrande}`);
+
+//Somar 2 numeros 
