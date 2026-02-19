@@ -10,9 +10,9 @@ const multiplicacao = primeiroNumero * segundoNumero;
 const divisao = primeiroNumero / segundoNumero;
 
 console.log(`the sum is: ${soma}`);
-console.log(`the sum is: ${subtracao}`);
-console.log(`the sum is: ${multiplicacao}`);
-console.log(`the sum is: ${divisao.toFixed(2)}`);
+console.log(`the subtraction is: ${subtracao}`);
+console.log(`the multiplication is: ${multiplicacao}`);
+console.log(`the division is: ${divisao.toFixed(2)}`);
 
 //ponto flutuante
 
