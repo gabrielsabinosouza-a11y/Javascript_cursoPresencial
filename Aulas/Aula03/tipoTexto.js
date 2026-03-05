@@ -1,7 +1,11 @@
-const texto1 = "Hello, World!";
-const texto2 = "Ola, Mundo!";
+
 const senha = "senhaIncorreta";
 const stringDeNumeros = "3456";
-const citacao =  'Leo disse "Oi"';
+const citacao =  "Meu nome e ";
+const meuNome = "Gabriel"
+console.log(citacao + meuNome);
 
-console.log(citacao);
+ const texto1 = "Colegio";
+ const texto2 = "C";
+
+ console.log(texto1 === texto2);
