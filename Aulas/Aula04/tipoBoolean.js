@@ -3,4 +3,5 @@ const segundoNumero = 10;
 const terceiroNumero = 5;
 console.log(primeiroNumero === segundoNumero);
 console.log(primeiroNumero === terceiroNumero);
-
+let forma = "retangulo";
+let altura = 5;
