@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>InksJar Corporation | Portfólio Criativo</title>
+  <!-- Tailwind CSS + Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Paleta equilibrada com branco e tons suaves
+            primary: '#F59E0B',     // laranja suave
+            primaryDark: '#D97706',
+            secondary: '#EF4444',   // vermelho suave
+            secondaryLight: '#FEE2E2',
+            accent: '#FBBF24',      // amarelo
+            accentLight: '#FEF3C7',
+            cream: '#FFFBEB',
+            warmGray: '#F9F7F5',
+            softGray: '#F3F4F6',
+            textMain: '#1F2937',
+            textLight: '#6B7280',
+            whitePure: '#FFFFFF',
+            cardBg: '#FFFFFF',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'fade-in': 'fadeIn 0.5s ease-out',
+            'scale-hover': 'scaleUp 0.3s ease',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            scaleUp: {
+              '0%': { transform: 'scale(1)' },
+              '100%': { transform: 'scale(1.03)' },
+            },
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+    
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #FEF9E6 0%, #FFF7ED 50%, #FFF5F0 100%);
+      background-attachment: fixed;
+    }
+    
+    /* Cards com sombra suave e hover elegante */
+    .card-elegant {
+      background: #FFFFFF;
+      border-radius: 1.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+    }
+    
+    .card-elegant:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1), 0 4px 8px -4px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Navegação suave */
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg, #F59E0B, #EF4444);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Botões com gradiente suave */
+    .btn-gradient {
+      background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+    }
+    
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+    }
+    
+    /* Badges e tags */
+    .badge-soft {
+      background: linear-gradient(135deg, #FEF3C7, #FEE2E2);
+      color: #D97706;
+      border-radius: 2rem;
+      padding: 0.25rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    /* Scrollbar personalizada suave */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FEF9E6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #F59E0B, #EF4444);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D97706;
+    }
+    
+    /* Hero section com gradiente suave */
+    .hero-gradient {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFF7ED 100%);
+      border: 1px solid rgba(245, 158, 11, 0.1);
+    }
+    
+    /* Animações de entrada */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Slogan com gradiente suave */
+    .slogan-gradient {
+      background: linear-gradient(135deg, #F59E0B, #EF4444, #FBBF24);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 4s linear infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    
+    /* Ícones com cor suave */
+    .icon-circle {
+      background: linear-gradient(135deg, #FEF3C7, #FEE2E2);
+      border-radius: 1rem;
+      padding: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Cards de features */
+    .feature-card {
+      transition: all 0.3s ease;
+      border: 1px solid #FEF3C7;
+    }
+    
+    .feature-card:hover {
+      border-color: #F59E0B;
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- Header com fundo branco e sombra suave -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300" id="header">
+    <div class="container mx-auto px-4 md:px-8 py-4">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <!-- Logo -->
+        <div class="flex items-center gap-3 group cursor-pointer">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-md group-hover:shadow-lg transition-all">
+            <i class="fas fa-cube text-white text-xl"></i>
+          </div>
+          <div>
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">
+              <span class="text-primary">INK</span><span class="text-secondary">S</span><span class="text-accent">JAR</span>
+            </h1>
+            <p class="text-xs text-textLight">Corporation · Criação sem limites</p>
+          </div>
+        </div>
+
+        <!-- Navegação Desktop -->
+        <nav class="hidden md:block">
+          <ul class="flex gap-8">
+            <li><a href="#sobre" class="nav-link text-textMain hover:text-primary font-medium transition-all">Conceito</a></li>
+            <li><a href="#produto" class="nav-link text-textMain hover:text-primary font-medium transition-all">Produto</a></li>
+            <li><a href="#inovacao" class="nav-link text-textMain hover:text-primary font-medium transition-all">Inovação</a></li>
+            <li><a href="#estrutura" class="nav-link text-textMain hover:text-primary font-medium transition-all">Equipe</a></li>
+            <li><a href="#investimento" class="nav-link text-textMain hover:text-primary font-medium transition-all">Investimento</a></li>
+            <li><a href="#amostragem" class="nav-link text-textMain hover:text-primary font-medium transition-all">Amostra</a></li>
+            <li><a href="#marketing" class="px-5 py-2 btn-gradient text-white rounded-full font-semibold transition-all">Marketing</a></li>
+          </ul>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button id="menuBtn" class="md:hidden text-textMain text-2xl focus:outline-none hover:text-primary transition">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 flex flex-col gap-3 animate-fade-in bg-white rounded-2xl p-4 shadow-lg">
+        <a href="#sobre" class="nav-link text-textMain hover:text-primary py-2">Conceito</a>
+        <a href="#produto" class="nav-link text-textMain hover:text-primary py-2">Produto</a>
+        <a href="#inovacao" class="nav-link text-textMain hover:text-primary py-2">Inovação</a>
+        <a href="#estrutura" class="nav-link text-textMain hover:text-primary py-2">Equipe</a>
+        <a href="#investimento" class="nav-link text-textMain hover:text-primary py-2">Investimento</a>
+        <a href="#amostragem" class="nav-link text-textMain hover:text-primary py-2">Amostra</a>
+        <a href="#marketing" class="px-5 py-2 btn-gradient text-white rounded-full font-semibold text-center">Marketing</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-28 pb-16">
+    <div class="container mx-auto px-4 md:px-8 max-w-7xl">
+      
+      <!-- Slogan Hero com design clean e branco -->
+      <div class="hero-gradient rounded-3xl p-8 md:p-12 mb-16 text-center animate-slide-up shadow-xl border border-white/50">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 mb-6">
+          <i class="fas fa-magic text-4xl text-primary"></i>
+        </div>
+        <h2 class="text-4xl md:text-6xl font-bold mb-4 slogan-gradient">✦ Transforme ideias em realidade ✦</h2>
+        <p class="text-xl text-textLight mb-4 max-w-2xl mx-auto">Design 3D, impressão sustentável e decoração inteligente na palma da mão</p>
+        <div class="inline-flex items-center gap-2 bg-softGray rounded-full px-6 py-2 mt-4">
+          <i class="fas fa-tag text-primary text-sm"></i>
+          <span class="text-textMain font-medium">Slogan oficial:</span>
+          <span class="text-textLight">"InksJar: sua criatividade, nosso jarro de possibilidades."</span>
+        </div>
+      </div>
+
+      <div class="space-y-10">
+        
+        <!-- Conceito -->
+        <section id="sobre" class="animate-on-scroll card-elegant p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="icon-circle">
+              <i class="fas fa-gem text-2xl text-primary"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-textMain">Conceito & Identidade</h2>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-softGray rounded-xl p-5 hover:bg-white transition-all duration-300 hover:shadow-md">
+              <i class="fas fa-jar text-3xl text-primary mb-3"></i>
+              <h3 class="text-xl font-semibold text-primary mb-2">Significado</h3>
+              <p class="text-textLight text-sm leading-relaxed">Inks (tintas/criação) + Jar (recipiente) - onde ideias criativas são guardadas e transformadas em objetos reais.</p>
+            </div>
+            <div class="bg-softGray rounded-xl p-5 hover:bg-white transition-all duration-300 hover:shadow-md">
+              <i class="fas fa-rocket text-3xl text-primary mb-3"></i>
+              <h3 class="text-xl font-semibold text-primary mb-2">Missão</h3>
+              <p class="text-textLight text-sm leading-relaxed">Transformar ideias em objetos reais através de tecnologia 3D, oferecendo soluções criativas, personalizadas e sustentáveis.</p>
+            </div>
+            <div class="bg-softGray rounded-xl p-5 hover:bg-white transition-all duration-300 hover:shadow-md">
+              <i class="fas fa-eye text-3xl text-primary mb-3"></i>
+              <h3 class="text-xl font-semibold text-primary mb-2">Visão</h3>
+              <p class="text-textLight text-sm leading-relaxed">Ser referência em design digital e impressão 3D personalizada, permitindo que qualquer pessoa crie facilmente.</p>
+            </div>
+            <div class="bg-softGray rounded-xl p-5 hover:bg-white transition-all duration-300 hover:shadow-md">
+              <i class="fas fa-heart text-3xl text-primary mb-3"></i>
+              <h3 class="text-xl font-semibold text-primary mb-2">Valores</h3>
+              <p class="text-textLight text-sm leading-relaxed">Inovação · Sustentabilidade · Criatividade · Qualidade · Ética · Foco no cliente</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Produto Marketing -->
+        <section id="produto" class="animate-on-scroll card-elegant p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="icon-circle">
+              <i class="fas fa-crown text-2xl text-primary"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-textMain">O que oferecemos?</h2>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="feature-card bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl p-5 text-center">
+              <i class="fas fa-mobile-alt text-4xl text-primary mb-3"></i>
+              <p class="font-semibold text-textMain">App 3D Inteligente</p>
+              <small class="text-textLight">Escaneie ambientes em tempo real</small>
+            </div>
+            <div class="feature-card bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl p-5 text-center">
+              <i class="fas fa-print text-4xl text-primary mb-3"></i>
+              <p class="font-semibold text-textMain">Impressão sob demanda</p>
+              <small class="text-textLight">Filamento PET reciclado</small>
+            </div>
+            <div class="feature-card bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl p-5 text-center">
+              <i class="fas fa-palette text-4xl text-primary mb-3"></i>
+              <p class="font-semibold text-textMain">Personalização total</p>
+              <small class="text-textLight">Objetos e camisetas únicas</small>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-softGray rounded-xl p-5">
+              <span class="badge-soft inline-block mb-3">⭐ Diferencial InksJar</span>
+              <p class="text-textMain leading-relaxed">Crie, escaneie, personalize e imprima! Nosso app permite escanear cômodos, gerar modelo 3D, sugerir objetos decorativos e fabricar com filamento de garrafas PET recicladas.</p>
+            </div>
+            <div class="bg-softGray rounded-xl p-5">
+              <h3 class="text-xl font-semibold text-primary mb-2">💰 Modelo de Receita</h3>
+              <p class="text-textMain text-sm">App gratuito · Impressão 3D sob demanda · Camisetas personalizadas · Plano Premium (sem anúncios + descontos)</p>
+              <p class="text-primary mt-3 font-medium"><i class="fas fa-chart-line mr-1"></i> Vendas via App + Site Oficial</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Inovação -->
+        <section id="inovacao" class="animate-on-scroll card-elegant p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="icon-circle">
+              <i class="fas fa-lightbulb text-2xl text-primary"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-textMain">Inovação</h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-softGray rounded-xl p-5">
+              <ul class="space-y-3">
+                <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-textMain">Design digital + fabricação real integrada</span></li>
+                <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-textMain">Personalização total com scanner de ambiente</span></li>
+                <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-textMain">Filamento ecológico de garrafas PET recicladas</span></li>
+            </div>
+            <div class="bg-softGray rounded-xl p-5">
+              <h3 class="text-xl font-semibold text-primary mb-3">🧠 Diferencial competitivo</h3>
+              <p class="text-textMain leading-relaxed">Enquanto concorrentes como Blender são complexos, a InksJar oferece ecossistema completo: escaneamento + sugestões + personalização + impressão sustentável, tudo em uma interface amigável.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Estrutura / Cargos -->
+        <section id="estrutura" class="animate-on-scroll card-elegant p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="icon-circle">
+              <i class="fas fa-users text-2xl text-primary"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-textMain">Divisão de Cargos</h2>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div class="bg-softGray rounded-xl p-4 hover:bg-white hover:shadow-md transition-all"><i class="fas fa-tasks text-primary mr-2"></i><strong class="text-textMain">Gerente de Projetos</strong><br><span class="text-textLight text-sm">Lucas Daniel - Cronogramas, tarefas, riscos</span></div>
+            <div class="bg-softGray rounded-xl p-4 hover:bg-white hover:shadow-md transition-all"><i class="fas fa-code text-primary mr-2"></i><strong class="text-textMain">Programação</strong><br><span class="text-textLight text-sm">Gabriel Felipe - App fullstack, Git/GitHub</span></div>
+            <div class="bg-softGray rounded-xl p-4 hover:bg-white hover:shadow-md transition-all"><i class="fas fa-chart-simple text-primary mr-2"></i><strong class="text-textMain">Marketing</strong><br><span class="text-textLight text-sm">Alice Oliveira - Redes, campanhas, atração</span></div>
+            <div class="bg-softGray rounded-xl p-4 hover:bg-white hover:shadow-md transition-all"><i class="fas fa-paintbrush text-primary mr-2"></i><strong class="text-textMain">Design Gráfico</strong><br><span class="text-textLight text-sm">Isabelle Helena - Identidade visual, artes</span></div>
+            <div class="bg-softGray rounded-xl p-4 hover:bg-white hover:shadow-md transition-all"><i class="fas fa-handshake text-primary mr-2"></i><strong class="text-textMain">Recursos Humanos</strong><br><span class="text-textLight text-sm">Beatriz Pereira - Clima, satisfação, mediação</span></div>
+            <div class="bg-softGray rounded-xl p-4 hover:bg-white hover:shadow-md transition-all"><i class="fas fa-chart-line text-primary mr-2"></i><strong class="text-textMain">Gerente Financeira</strong><br><span class="text-textLight text-sm">Emely de Mello - Orçamento, investimentos</span></div>
+          </div>
+        </section>
+
+        <!-- Investimento -->
+        <section id="investimento" class="animate-on-scroll card-elegant p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="icon-circle">
+              <i class="fas fa-coins text-2xl text-primary"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-textMain">Investimento & Recursos</h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-softGray rounded-xl p-5">
+              <h3 class="text-xl font-semibold text-primary mb-3">📋 Recursos Necessários</h3>
+              <ul class="space-y-2 text-textMain">
+                <li><i class="fas fa-check text-primary mr-2"></i>Computadores para desenvolvimento</li>
+                <li><i class="fas fa-check text-primary mr-2"></i>Impressoras 3D de médio porte</li>
+                <li><i class="fas fa-check text-primary mr-2"></i>Filamentos PET reciclado e PLA</li>
+                <li><i class="fas fa-check text-primary mr-2"></i>Servidores cloud para o app</li>
+              </ul>
+            </div>
+            <div class="bg-softGray rounded-xl p-5">
+              <h3 class="text-xl font-semibold text-primary mb-3">⏱️ Estimativa de Investimento</h3>
+              <p class="text-3xl font-bold text-primary mt-2">R$ 180k - R$ 320k</p>
+              <p class="text-textLight mt-2">MVP em 6-12 meses · 3 meses desenvolvimento · 4 meses testes · 3-5 meses lançamento</p>
+              <div class="mt-4 p-3 bg-white rounded-lg">
+                <p class="text-sm text-textMain"><i class="fas fa-chart-line text-primary"></i> ROI estimado: 35% no primeiro ano</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Amostragem -->
+        <section id="amostragem" class="animate-on-scroll card-elegant p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="icon-circle">
+              <i class="fas fa-tablet-alt text-2xl text-primary"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-textMain">Amostragem do Projeto</h2>
+          </div>
+          <div class="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-6">
+            <ol class="list-decimal list-inside space-y-3 text-textMain">
+              <li>Usuário abre o aplicativo InksJar</li>
+              <li>Escaneia um cômodo da casa usando a câmera do celular</li>
+              <li>App gera modelo digital 3D do ambiente em tempo real</li>
+              <li>Sistema sugere objetos decorativos personalizados</li>
+              <li>Usuário personaliza os objetos em 3D (cores, tamanhos, texturas)</li>
+              <li>Encomenda a impressão física com material sustentável</li>
+            </ol>
+          </div>
+          <div class="flex flex-wrap gap-3 justify-center mt-6">
+            <span class="bg-softGray px-4 py-2 rounded-full text-textMain"><i class="fas fa-camera text-primary mr-2"></i> Escaneamento 3D</span>
+            <span class="bg-softGray px-4 py-2 rounded-full text-textMain"><i class="fas fa-paint-brush text-primary mr-2"></i> Personalização</span>
+            <span class="bg-softGray px-4 py-2 rounded-full text-textMain"><i class="fas fa-recycle text-primary mr-2"></i> Sustentável</span>
+            <span class="bg-softGray px-4 py-2 rounded-full text-textMain"><i class="fas fa-cube text-primary mr-2"></i> Impressão sob demanda</span>
+          </div>
+        </section>
+
+        <!-- Pitch e marketing -->
+        <section id="marketing" class="animate-on-scroll card-elegant p-6 md:p-8 bg-gradient-to-r from-primary/5 to-secondary/5">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="icon-circle">
+              <i class="fas fa-bullhorn text-2xl text-primary"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-textMain">Pitch Rápido</h2>
+          </div>
+          <div class="bg-white rounded-2xl p-6 mb-6 shadow-sm">
+            <p class="text-lg italic text-textMain text-center">"Cansado de decorar sem saber se o objeto combina? Com InksJar, escaneie o ambiente, receba sugestões personalizadas, crie objetos em 3D e imprima em material reciclado. Do digital ao físico com um clique."</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-5">
+            <div class="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition">
+              <i class="fas fa-chart-line text-primary text-xl mr-2"></i>
+              <strong class="text-textMain">Desafios de melhoria:</strong>
+              <p class="text-textLight text-sm mt-1">Reuniões de alinhamento semanais, parcerias com influenciadores de decoração</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition">
+              <i class="fas fa-calendar-check text-primary text-xl mr-2"></i>
+              <strong class="text-textMain">Metas para 6 meses:</strong>
+              <p class="text-textLight text-sm mt-1">Versão beta do app, 5 parcerias estratégicas, 200 objetos produzidos com PET reciclado</p>
+            </div>
+          </div>
+          <div class="mt-6 text-center p-4 bg-gradient-to-r from-primary to-secondary rounded-2xl">
+            <p class="font-bold text-white">✨ Portfólio apresentado ao coordenador do curso — Projeto pronto para execução ✨</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-primary/10 mt-16 py-8">
+    <div class="container mx-auto px-4 text-center">
+   
+      <p class="text-textLight">InksJar Corporation © 2026 — Criatividade, sustentabilidade e impressão 3D inteligente.</p>
+      <p class="text-sm text-primary mt-2 font-medium">Slogan: "Transforme ideias em realidade"</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Scroll animation observer
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -30px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if(window.scrollY > 50) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+</body>
+</html>
